@@ -1,0 +1,105 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Administrador Electro",
+      "email": "admin@electro.com",
+      "password": "123456",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Juan Perez",
+      "email": "cliente@electro.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "María Gómez",
+      "email": "maria@electro.com",
+      "password": "123456",
+      "role": "user"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Refrigerador Smart Side by Side 580L",
+      "description": "Refrigerador con tecnología Inverter, panel táctil digital, dispensador de agua y hielo automático, conectividad Wi-Fi.",
+      "price": 1299.99,
+      "category": "Refrigeración",
+      "brand": "Samsung",
+      "status": "disponible",
+      "buyerId": null,
+      "buyerName": null,
+      "requestedAt": null,
+      "soldAt": null
+    },
+    {
+      "id": 2,
+      "name": "Lavadora Carga Frontal 18kg EcoBubble",
+      "description": "Lavadora inteligente de alta eficiencia, motor Direct Drive con garantía de 10 años, conectividad SmartThings y ciclos de vapor desinfectante.",
+      "price": 849.50,
+      "category": "Limpieza",
+      "brand": "LG",
+      "status": "solicitado",
+      "buyerId": 2,
+      "buyerName": "Juan Perez",
+      "requestedAt": "2026-06-05T10:30:00.000Z",
+      "soldAt": null
+    },
+    {
+      "id": 3,
+      "name": "Licuadora de Alta Potencia 1400W Profesional",
+      "description": "Licuadora con jarra de vidrio templado de 2 litros, 3 velocidades preprogramadas y cuchillas de acero inoxidable de grado militar.",
+      "price": 149.99,
+      "category": "Cocina",
+      "brand": "Oster",
+      "status": "vendido",
+      "buyerId": 3,
+      "buyerName": "María Gómez",
+      "requestedAt": "2026-06-04T15:20:00.000Z",
+      "soldAt": "2026-06-04T17:45:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Aire Acondicionado Split Inverter 12000 BTU",
+      "description": "Aire acondicionado frío/calor, ultra silencioso con filtro purificador de aire de triple capa y modo ecológico de ahorro de energía del 70%.",
+      "price": 450.00,
+      "category": "Climatización",
+      "brand": "Midea",
+      "status": "disponible",
+      "buyerId": null,
+      "buyerName": null,
+      "requestedAt": null,
+      "soldAt": null
+    },
+    {
+      "id": 5,
+      "name": "Horno de Microondas con Grill 30L",
+      "description": "Microondas con 10 niveles de potencia, función doradora por convección, platos automáticos de descongelación rápida.",
+      "price": 189.90,
+      "category": "Cocina",
+      "brand": "Panasonic",
+      "status": "disponible",
+      "buyerId": null,
+      "buyerName": null,
+      "requestedAt": null,
+      "soldAt": null
+    },
+    {
+      "id": 6,
+      "name": "Aspiradora Robot Inteligente con Mapeo Láser",
+      "description": "Aspiradora y mopa robot con navegación LiDAR, recarga autónoma, control de potencia de succión inteligente y sensor anticaídas.",
+      "price": 329.99,
+      "category": "Limpieza",
+      "brand": "Xiaomi",
+      "status": "vendido",
+      "buyerId": 2,
+      "buyerName": "Juan Perez",
+      "requestedAt": "2026-06-03T09:15:00.000Z",
+      "soldAt": "2026-06-03T11:30:00.000Z"
+    }
+  ]
+}
