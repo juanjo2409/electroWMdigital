@@ -77,8 +77,18 @@ async function loadProductsTable(container) {
                   return `
                     <tr class="hover:bg-slate-50/40 transition-colors">
                       <td class="px-6 py-4">
-                        <div class="font-bold text-slate-800">${p.name}</div>
-                        <div class="text-xs text-slate-400 line-clamp-1 mt-0.5">${p.description}</div>
+                        <div class="flex items-center space-x-3">
+                          ${p.imageUrl 
+                            ? `<img src="${p.imageUrl}" alt="${p.name}" class="w-10 h-10 object-cover rounded-lg border border-slate-100 flex-shrink-0">` 
+                            : `<div class="w-10 h-10 bg-indigo-50 text-indigo-500 rounded-lg flex items-center justify-center border border-indigo-100 flex-shrink-0">
+                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                               </div>`
+                          }
+                          <div>
+                            <div class="font-bold text-slate-800">${p.name}</div>
+                            <div class="text-xs text-slate-400 line-clamp-1 mt-0.5">${p.description}</div>
+                          </div>
+                        </div>
                       </td>
                       <td class="px-6 py-4 text-slate-600 font-semibold">${p.brand}</td>
                       <td class="px-6 py-4">
@@ -169,6 +179,11 @@ function openFormModal(product = null, container) {
         <input id="p-name" type="text" required class="block w-full px-3 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none" placeholder="e.g. Refrigerador Smart Side by Side" value="${isEdit ? product.name : ''}">
       </div>
 
+      <div>
+        <label for="p-image" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">URL de la Imagen</label>
+        <input id="p-image" type="text" class="block w-full px-3 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-800 focus:outline-none" placeholder="e.g. /images/refrigerator.png o URL externa" value="${isEdit && product.imageUrl ? product.imageUrl : ''}">
+      </div>
+
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label for="p-brand" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Marca</label>
@@ -228,6 +243,7 @@ function openFormModal(product = null, container) {
       const price = Number(modalEl.querySelector('#p-price').value);
       const status = modalEl.querySelector('#p-status').value;
       const description = modalEl.querySelector('#p-desc').value.trim();
+      const imageUrl = modalEl.querySelector('#p-image').value.trim();
 
       if (!name || !brand || !price || !description) {
         showToast('Complete todos los campos del formulario.', 'warning');
@@ -241,7 +257,8 @@ function openFormModal(product = null, container) {
         category, 
         price, 
         status, 
-        description 
+        description,
+        imageUrl: imageUrl || null
       };
 
       // Si se crea o se vuelve disponible, limpiar comprador

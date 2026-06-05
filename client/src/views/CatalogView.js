@@ -91,8 +91,11 @@ async function loadCatalogContent(container) {
         return `
           <div class="bg-white rounded-3xl border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
             <!-- Imagen / Icono de Categoría Decorativo -->
-            <div class="relative h-44 bg-slate-50 flex items-center justify-center border-b border-slate-100">
-              ${getCategoryIconSVG(p.category)}
+            <div class="relative h-44 bg-slate-50 flex items-center justify-center border-b border-slate-100 overflow-hidden">
+              ${p.imageUrl 
+                ? `<img src="${p.imageUrl}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">` 
+                : getCategoryIconSVG(p.category)
+              }
               <div class="absolute top-4 left-4">
                 ${statusBadgeHTML}
               </div>
