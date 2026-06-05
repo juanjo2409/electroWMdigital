@@ -1,4 +1,6 @@
-export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = import.meta.env.PROD 
+  ? 'https://electrowmdigital.onrender.com' 
+  : 'http://localhost:3001';
 
 /**
  * Manejador común para realizar peticiones fetch y procesar respuestas/errores
