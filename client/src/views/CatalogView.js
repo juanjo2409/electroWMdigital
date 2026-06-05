@@ -1,10 +1,19 @@
-import { apiFetchProducts, apiPatchProduct } from '../services/api.js';
+import { apiFetchProducts, apiPatchProduct, BASE_URL } from '../services/api.js';
 import { getCurrentUser } from '../guards/auth.js';
 import { formatCurrency } from '../utils/helpers.js';
 import { showToast } from '../components/Toast.js';
 
 let currentFilterCategory = 'All';
 let currentSearchQuery = '';
+
+const getFullImageUrl = (url) => {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  // If running on local dev server but json-server is not serving images,
+  // we can also fallback or try serving it. Prepending BASE_URL (http://localhost:3001)
+  // is standard since json-server is the source of truth for the API.
+  return `${BASE_URL}${url}`;
+};
 
 /**
  * Renderiza la vista del catálogo de productos.
@@ -93,7 +102,7 @@ async function loadCatalogContent(container) {
             <!-- Imagen / Icono de Categoría Decorativo -->
             <div class="relative h-44 bg-slate-50 flex items-center justify-center border-b border-slate-100 overflow-hidden">
               ${p.imageUrl 
-                ? `<img src="${p.imageUrl}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">` 
+                ? `<img src="${getFullImageUrl(p.imageUrl)}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">` 
                 : getCategoryIconSVG(p.category)
               }
               <div class="absolute top-4 left-4">
